@@ -1,5 +1,5 @@
 class Planet {
-	constructor(x, y, size) {
+	constructor(x, y, distance, size, speed) {
 		this.cx = x;
 		this.cy = y;
 		
@@ -11,8 +11,8 @@ class Planet {
 		
 		//rotation
 		this.angle = -1;
-		this.distance = 100;
-		this.speed = 0.01;
+		this.distance = distance;
+		this.speed = speed / 100;
 	}
 	
 	rotate(){
@@ -27,6 +27,11 @@ class Planet {
 	}
 
 	draw(){
+		fill(this.color);
 		ellipse(this.x, this.y, this.size, this.size);
+		
+		noFill(this.color);
+		stroke(this.color);
+		circle(this.cx, this.cy, this.distance, this.distance);
 	}
 }
