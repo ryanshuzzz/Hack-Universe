@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-	<head> 
-		<meta charset="UTF-8"> 
-		<script src="https://cdn.jsdelivr.net/npm/phaser@3.16.2/dist/phaser.js"></script>
-	</head>
-	<body>
-		<script>
+
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
 
 function preload() {
@@ -173,6 +166,3 @@ function update() {
     }
 
 }
-</script>
-	</body>
-</html>
