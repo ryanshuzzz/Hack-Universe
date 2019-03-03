@@ -1,10 +1,10 @@
 class solarsystem {
 	constructor(){
 		this.system = [];
-		this.randomHeight = Math.floor(Math.random() * 721); //random location y 0-720
 		this.randomWidth = Math.floor(Math.random() * 1281); //random location x 0-1280
+		this.randomHeight = Math.floor(Math.random() * 721); //random location y 0-720
 		this.max = Math.floor(Math.random() * 9) + 1; //max amount of planets are 1-9
-		this.sunSize = Math.floor(Math.random() *51) + 50 //50-100
+		this.sunSize = Math.floor(Math.random() * 200) + 50 //50-100
 
 		var i;
 		var spd = Math.floor(Math.random()* 50) + 10;

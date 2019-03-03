@@ -1,0 +1,17 @@
+body{
+	background-color: var(--color-bg);
+	color: var(--color-text);
+	
+	height: 100%;
+	margin: 0;
+	padding: 0px;
+
+	font-family: Arial;
+	font-size: 14px;
+}
+
+canvas { 
+  height: 100vh; 
+  width: 100vw; 
+  display:block;
+}
