@@ -2,9 +2,8 @@ class universe{
 	// Init spawn solar systems
 	spawn(){
 		var i;
-		for(i = 0; i < 3; i++){
-			var size = 1000;
-			this.solar_systems.push(new solarsystem(0, 0, 0, 0));
+		for(i = 0; i < 1; i++){
+			this.solar_systems.push(new solarsystem(0, 0, 1920, 1080));
 			//this.solar_systems.push(new solarsystem(Math.floor(Math.random() * size), Math.floor(Math.random() * size), size, size));
 		}
 	}
@@ -48,7 +47,7 @@ class universe{
 			console.log(sol_x + ", " + sol_y + ", " + this.cam_x + ", " + this.cam_y + ", " + dist);
 			//console.log(dist);
 			
-			if(Math.abs(dist) < 500){
+			if(Math.abs(dist) < 5000){
 				this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
 				this.solar_systems[i].rotatePlanets();
 				this.solar_systems[i].drawPlanets();
