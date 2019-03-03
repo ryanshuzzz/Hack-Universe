@@ -29,6 +29,7 @@ function draw() {
 		uni.resetCam();
 		uni.move(1,1);
 	}
+	//Mobile touch
 	
 	background(0);
 	stars.draw();
