@@ -41,13 +41,15 @@ class universe{
 		for(i = 0; i < this.solar_systems.length; i++){
 			var sol_x = this.solar_systems[i].getdata().x;
 			var sol_y = this.solar_systems[i].getdata().y;
-			
+			var rad = this.solar_systems[i].getdata().radius;
+
+			var xDiff = Math.abs(this.cam_x-sol_x);
+			var yDiff = Math.abs(this.cam_y-sol_y);
+
 			// Draw systems within distance
-			var dist = this.distance(this.cam_x, this.cam_y, sol_x, sol_y);
-			console.log(sol_x + ", " + sol_y + ", " + this.cam_x + ", " + this.cam_y + ", " + dist);
-			//console.log(dist);
-			
-			if(Math.abs(dist) < 5000){
+			var dist = this.distance(this.cam_x - canvas.width/2, this.cam_y - canvas.height/2, sol_x, sol_y);
+			console.log(Math.abs(dist) + ", "+ canvas.width);
+			if(Math.abs(dist) > canvas.width + rad){
 				this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
 				this.solar_systems[i].rotatePlanets();
 				this.solar_systems[i].drawPlanets();
