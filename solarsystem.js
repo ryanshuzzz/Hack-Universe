@@ -10,12 +10,12 @@ class solarsystem {
 		this.sunSize = Math.floor(Math.random() * 200) + 100 //50-100
 
 		var i;
-		var spd = Math.floor(Math.random()* 1000) + 500;
+		var spd = (Math.floor(Math.random()* 140) + 300) / 2;
 		var dist = this.sunSize;
 		
 		// Generate planets
 		for(i = 0; i < this.max; i++){
-			spd -= Math.floor(Math.random()* 100) + 1; //random speed
+			spd -= Math.floor(Math.random()* 10) + 20; //random speed
 			
 			if (spd <= 0)
 				spd = 1;

@@ -1,7 +1,5 @@
 class universe{
 	// Init spawn solar systems
-
-	
 	constructor(){
 		this.cam_x = 0;
 		this.cam_y = 0;
@@ -90,6 +88,8 @@ class universe{
 	update(){
 		var canvas = document.getElementById('defaultCanvas0');
 		
+		console.log(this.solar_systems.length);
+		
 		var i;
 		for(i = 0; i < this.solar_systems.length; i++){
 			var sol_x = this.solar_systems[i].getdata().x;
@@ -97,8 +97,8 @@ class universe{
 			var rad = this.solar_systems[i].getdata().radius;
 			
 			var dist = this.distance(this.cam_x, this.cam_y, sol_x, sol_y);
-			//console.log(i + ": " + Math.abs(dist) + "..." + this.cam_y + "....." +sol_y);
-			//console.log(Math.abs(dist));// + ", "+ canvas.width);
+			
+			// Draw solar system if on canvas
 			if(Math.abs(dist) < this.distance(0,0,Math.abs(canvas.width),Math.abs(canvas.height)) + Math.abs(rad) + 50){
 				this.solar_systems[i].rotatePlanets();
 				this.solar_systems[i].drawPlanets();

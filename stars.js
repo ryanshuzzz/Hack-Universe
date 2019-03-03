@@ -7,27 +7,50 @@ class star {
 		this.alpha = 210;
 		this.alpha_min = 0;
 		this.alpha_delta = (Math.floor(Math.random() * 3) + 1) / 2;
+		this.speedmod = Math.floor(Math.random() * 5)
 	}
 	
-	draw(s_width, s_height, dx, dy){
+	draw(s_width, s_height, dx, dy, base_alpha){
 		noStroke();
-		fill(this.alpha);
+		fill(this.alpha - base_alpha);
 		square(this.x , this.y, this.size);
 
-		this.x += dx;
-		this.y += dy;
-
-		if(this.x >= s_width){
-			this.x = 0;
-		} else if(this.x <= 0){
-			this.x = s_width;
+		if(dx != 0){
+			this.x += dx + Math.abs(this.speedmod);
 		}
-		if(this.y <= 0){
-			this.y = s_height;
-		} else if(this.y >= s_height){
-			this.y = 0;
+		
+		if(dy != 0){
+			this.y += dy + Math.abs(this.speedmod);
+		}
+		
+		if(dx != 0 && dy != 0){
+			this.y -= Math.abs(this.speedmod);
 		}
 
+		if(this.x > s_width){
+			while(this.x > s_width){
+				this.x -= s_width;
+			}
+			this.y = Math.floor(Math.random() * s_height);
+		} else if(this.x < 0){
+			while(this.x < 0){
+				this.x += s_width;
+			}
+			this.y = Math.floor(Math.random() * s_height);
+		}
+		
+		if(this.y < 0){
+			this.x = Math.floor(Math.random() * s_width);
+			while(this.y < 0){
+				this.y += s_height;
+			}
+		} else if(this.y > s_height){
+			this.x = Math.floor(Math.random() * s_width);
+			
+			while(this.y > s_height){
+				this.y -= s_height;
+			}
+		}
 		
 		this.alpha -= this.alpha_delta;
 		if(this.alpha <= this.alpha_min || this.alpha >= 200){
@@ -37,13 +60,16 @@ class star {
 }
 
 class starsystem {
-	constructor() {
-		this.s_width = 4000;
-		this.s_height = 4000;
+	constructor(speed, base_alpha=0) {
+		this.s_width = 1280;
+		this.s_height = 720;
 		this.buffer = [];
-		this.max = 1500;
+		this.max = 70;
 		this.dx = 0;
 		this.dy = 0;
+		
+		this.base_alpha = base_alpha;
+		this.speed = speed;
 		
 		var i = 0;
 		for(i = 0; i < this.max; i++){
@@ -52,11 +78,13 @@ class starsystem {
 			var size = Math.floor(Math.random() * 3) + 1;
 			this.buffer.push(new star(x, y, size));
 		}
-
 	}
+	
 	setDelta(h,v){
-		this.dx = h;
-		this.dy = v;
+		if(h != null)
+			this.dx = h * this.speed;
+		if(v != null)
+			this.dy = v * this.speed;
 	}
 	
 	
@@ -66,8 +94,8 @@ class starsystem {
 		
 		var i = 0;
 		for(i = 0; i < this.buffer.length; i++){
-			this.buffer[i].draw(this.s_width, this.s_height, this.dx, this.dy);
-
+			//this.buffer[i].draw(this.s_width, this.s_height, this.dx, this.dy);
+			this.buffer[i].draw(canvas.width, canvas.height, this.dx, this.dy, this.base_alpha);
 		}
 	}
 }

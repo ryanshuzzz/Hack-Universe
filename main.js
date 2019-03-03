@@ -1,28 +1,35 @@
 uni = new universe();
-stars = new starsystem();
+stars = new starsystem(20);
+stars2 = new starsystem(10, 150);
 
 function draw() {
-	// Up
 	stars.setDelta(0,0);
+	stars2.setDelta(0,0);
 	
+	// Up
 	if (keyIsDown(87)){
 		uni.move(0, 1);
-		stars.setDelta(0,5)
+		stars.setDelta(null,1)
+		stars2.setDelta(null,1);
 	}
+	
 	// Down
 	if (keyIsDown(83)){
 		uni.move(0, -1);
-		stars.setDelta(0,-5);
+		stars.setDelta(null,-1);
+		stars2.setDelta(null,-1);
 	}
 	// Left
 	if (keyIsDown(68)){
 		uni.move(-1, 0);
-		stars.setDelta(-5,0);
+		stars.setDelta(-1,null);
+		stars2.setDelta(-1,null);
 	}
 	// Right
 	if (keyIsDown(65)){
 		uni.move(1, 0);
-		stars.setDelta(5,0);
+		stars.setDelta(1,null);
+		stars2.setDelta(1,null);
 	}
 	//Reset with Space
 	if (keyIsDown(32)){
@@ -33,5 +40,6 @@ function draw() {
 	
 	background(0);
 	stars.draw();
+	stars2.draw();
 	uni.update();
 }
