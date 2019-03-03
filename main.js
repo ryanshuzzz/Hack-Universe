@@ -4,7 +4,7 @@ Venus = new Planet(500, 500, 300, 14, -3);
 Sun = new Planet(500, 500, 0, 50, 0);
 
 
-var sunColors = ["#FFE484", "#FFCC33", "#FC9601", "#D14009"];
+
 
 
 

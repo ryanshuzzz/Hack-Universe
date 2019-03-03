@@ -3,7 +3,7 @@ var planetColors = ["#97979F", "#CECCD1", "#B5A7A7","#99857A", "#C67B5C",
                  "#8CB1DE", "#945B47", "#927E77", "#3C4258", "#343E47",
 				 "#7B7869", "#A49B72", "#C5AB6E", "#C3A171"];
 
-
+var sunColors = ["#FFE484", "#FFCC33", "#FC9601", "#D14009"];
 
 class Planet {
 	constructor(x, y, distance, size, speed) {
@@ -30,7 +30,8 @@ class Planet {
 		this.x = this.distance * Math.cos(this.angle) + this.cx;
 		this.y = this.distance * Math.sin(this.angle) + this.cy;
 	}
-	setcolor(color){
+	isSun(){
+		let color = sunColors[Math.floor(Math.random() * sunColors.length)];
 		this.color = color;
 	}
 
