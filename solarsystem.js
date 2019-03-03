@@ -4,8 +4,8 @@ class solarsystem {
 		this.x =x;
 		this.y =y;
 		var k = Math.floor(Math.random() * 2)
-		this.x += Math.floor(Math.random() * 1600) + 200; //random location x 0-1280
-		this.y += Math.floor(Math.random() * 1000) + 150; //random location y 0-720
+		this.x += Math.floor(Math.random() * w); //random location x 0-1280
+		this.y += Math.floor(Math.random() * h); //random location y 0-720
 		this.max = Math.floor(Math.random() * 9) + 1; //max amount of planets are 1-9
 		this.sunSize = Math.floor(Math.random() * 200) + 100 //50-100
 
