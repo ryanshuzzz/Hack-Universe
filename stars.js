@@ -14,12 +14,6 @@ class star {
 		fill(this.alpha);
 		square(this.x , this.y, this.size);
 		
-		/*this.x -= 10;
-		
-		if(this.x < 0){
-			this.x = s_width;
-		}*/
-		
 		this.alpha -= this.alpha_delta;
 		if(this.alpha <= this.alpha_min || this.alpha >= 200){
 			this.alpha_delta = -this.alpha_delta;
@@ -28,7 +22,9 @@ class star {
 }
 
 class starsystem {
-	init(){
+	constructor() {
+		this.s_width = 1920;
+		this.s_height = 1920;
 		this.buffer = [];
 		this.max = 300;
 		
@@ -39,13 +35,6 @@ class starsystem {
 			var size = Math.floor(Math.random() * 3) + 1;
 			this.buffer.push(new star(x, y, size));
 		}
-	}
-	
-	constructor() {
-		this.s_width = 1920;
-		this.s_height = 1920;
-		
-		this.init();
 	}
 	
 	

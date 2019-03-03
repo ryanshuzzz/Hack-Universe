@@ -35,7 +35,15 @@ class Planet {
 		let color = sunColors[Math.floor(Math.random() * sunColors.length)];
 		this.color = color;
 	}
+	
+	getDistance(){
+		return this.distance;
+	}
 
+	setCenter(cx, cy){
+		this.cx = cx;
+		this.cy = cy;
+	}
 
 	draw(){
 		stroke(120);
@@ -45,6 +53,5 @@ class Planet {
 		ellipse(this.x, this.y, this.size, this.size);
 		
 		noFill(this.color);
-
 	}
 }

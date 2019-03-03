@@ -1,13 +1,13 @@
 class solarsystem {
-	constructor(){
+	constructor(x, y, w, h){
 		this.system = [];
-		this.randomWidth = Math.floor(Math.random() * 1281); //random location x 0-1280
-		this.randomHeight = Math.floor(Math.random() * 721); //random location y 0-720
+		this.x = Math.floor(Math.random() * w); //random location x 0-1280
+		this.y = Math.floor(Math.random() * h); //random location y 0-720
 		this.max = Math.floor(Math.random() * 9) + 1; //max amount of planets are 1-9
 		this.sunSize = Math.floor(Math.random() * 200) + 50 //50-100
 
 		var i;
-		var spd = Math.floor(Math.random()* 50) + 10;
+		var spd = Math.floor(Math.random()* 100) + 10;
 		var dist = this.sunSize;
 		
 		// Generate planets
@@ -23,27 +23,39 @@ class solarsystem {
 			//sun 
 			if(i == 0){
 				psize = this.sunSize;
-				this.system[i] = (new Planet(this.randomWidth,this.randomHeight, 0, psize, spd));
+				this.system[i] = (new Planet(this.x,this.y, 0, psize, spd));
 				this.system[i].isSun();
 			} else {
-				this.system[i] = (new Planet(this.randomWidth,this.randomHeight, dist, psize, spd));
+				this.system[i] = (new Planet(this.x,this.y, dist, psize, spd));
 			}
 		}
+	}
 
-	} // end of constructor
-
+	// Rotate all planets in solar system
 	rotatePlanets(){
-	var p;
-	for (p = 0; p<this.system.length;p++){
-	this.system[p].rotate();
-	}
+		var p;
+		for (p = 0; p<this.system.length;p++){
+			this.system[p].rotate();
+		}
 	}
 
+	// Draw all planets in solar system
 	drawPlanets(){
-	var k;
-	for (k = 0; k<this.system.length;k++){
-	this.system[k].draw();
+		var k;
+		for (k = 0; k<this.system.length;k++){
+			this.system[k].draw();
+		}
 	}
+	
+	set_pos(x, y){
+		var k;
+		for (k = 0; k<this.system.length;k++){
+			this.system[k].setCenter(x + this.x, y + this.y);
+		}
+	}
+	
+	getdata(){
+		return {x: this.x, y: this.y, radius: this.system[this.system.length-1].getDistance()};
 	}
 
 }
