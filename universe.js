@@ -5,12 +5,16 @@ class universe{
 	constructor(){
 		this.cam_x = 0;
 		this.cam_y = 0;
-		this.cam_speed = 30;
+		this.cam_speed = 100;
 		
 		this.solar_systems = [];
 
 		this.solarsystemspawnx;
 		this.solarsystemspawny;
+
+		this.count = 0;
+		this.cannotX = [];
+		this.cannotY = [];
 		
 		this.spawn();
 
@@ -23,13 +27,42 @@ class universe{
 	// Check in vicinity of player to see if solar system should be spawned
 
 	spawn(){
+		var spawnHere = true;
 		var i;
-		for(i = 0; i < 100; i++){
-			this.solar_systems[i] = (new solarsystem(10,10, 500, 500));
-			// location x,y - random width, height
-			//this.solar_systems.push(new solarsystem(Math.floor(Math.random() * size), Math.floor(Math.random() * size), size, size));
+		var k;
+		var square = 1500;
+			if(this.count == 0){
+				this.cannotY.push(0);
+				this.cannotX.push(0);
+				(this.count)++;
+				this.solar_systems[0] = (new solarsystem(0,0, 1920, 1080));
+				console.log("new SS created.");
+				spawnHere = false;
+			} else {
+				if (this.cam_x%square != 0 && this.cam_y%square!= 0){
+				spawnHere = false;
+				} else 
+				if ((this.cannotX.indexOf(this.cam_x/square) != -1)  && (this.cannotY.indexOf(this.cam_y/square) != -1)){
+				spawnHere = false;
+				}
+			}
 
-		}
+				if(this.cam_x%square == 0 && spawnHere != false && (this.cannotX.indexOf(this.cam_x/square)) == -1){
+					console.log(Math.floor(this.cam_x/square));
+					this.cannotX.push(Math.floor(this.cam_x/square));
+					this.solar_systems[this.count] = (new solarsystem(-this.cam_x*2,-this.cam_y*2, 1920, 1080));
+					(this.count)++;
+					console.log("new SS created, with x = " + this.cam_x);
+					spawnHere = false;
+				} else if (this.cam_y%square == 0 && spawnHere != false && (this.cannotY.indexOf(this.cam_y/square)) == -1){
+					this.cannotY.push(Math.floor(this.cam_y/square));
+					this.solar_systems[this.count] = (new solarsystem(-this.cam_x*2,-this.cam_y*2, 1920, 1080));
+					(this.count)++;
+					console.log("new SS created, with y = " + this.cam_y);
+					spawnHere = false;
+				}
+	console.log(this.count);
+	console.log(this.cam_x + ", " + this.cam_y);
 	}
 	
 	// Move the camera
@@ -40,10 +73,19 @@ class universe{
 		for(i = 0; i < this.solar_systems.length; i++){
 			this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
 		}
+		if(this.cam_x%1500 == 0 || this.cam_y%1500 == 0) {
+		 	this.spawn();
+		}
 		this.update();
+
 	}
 
-	
+
+	resetCam(){
+		this.cam_x = 0;
+		this.cam_y = 0;
+	}
+
 	// Onframe draw
 	update(){
 		var canvas = document.getElementById('defaultCanvas0');

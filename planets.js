@@ -19,7 +19,7 @@ class Planet {
 		//rotation
 		this.angle = Math.floor(Math.random() * 360);
 		this.distance = distance;
-		this.speed = speed / 100;
+		this.speed = speed / 10000;
 		let color = planetColors[Math.floor(Math.random() * planetColors.length)];
 		this.color = color;
 	}

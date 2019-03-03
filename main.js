@@ -24,6 +24,11 @@ function draw() {
 		uni.move(1, 0);
 		stars.setDelta(5,0);
 	}
+	//Reset with Space
+	if (keyIsDown(32)){
+		uni.resetCam();
+		uni.move(1,1);
+	}
 	
 	background(0);
 	stars.draw();

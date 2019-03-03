@@ -1,13 +1,16 @@
 class solarsystem {
 	constructor(x, y, w, h){
 		this.system = [];
-		this.x = Math.floor(Math.random() * w) * x + w; //random location x 0-1280
-		this.y = Math.floor(Math.random() * h) * y + h; //random location y 0-720
+		this.x =x;
+		this.y =y;
+		var k = Math.floor(Math.random() * 2)
+		this.x += Math.floor(Math.random() * 1600) + 200; //random location x 0-1280
+		this.y += Math.floor(Math.random() * 1000) + 150; //random location y 0-720
 		this.max = Math.floor(Math.random() * 9) + 1; //max amount of planets are 1-9
-		this.sunSize = Math.floor(Math.random() * 200) + 50 //50-100
+		this.sunSize = Math.floor(Math.random() * 200) + 100 //50-100
 
 		var i;
-		var spd = Math.floor(Math.random()* 100) + 10;
+		var spd = Math.floor(Math.random()* 1000) + 500;
 		var dist = this.sunSize;
 		
 		// Generate planets
@@ -17,7 +20,7 @@ class solarsystem {
 			if (spd <= 0)
 				spd = 1;
 			
-			var psize = Math.floor(Math.random() * 30) + 10; // random sun size
+			var psize = Math.floor(Math.random() * 50) + 10; // random sun size
 			dist += Math.floor(Math.random() * 40) + psize + 10; // random distance from sun
 
 			//sun 
