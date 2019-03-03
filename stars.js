@@ -16,7 +16,18 @@ class star {
 
 		this.x += dx;
 		this.y += dy;
-
+		if(this.x <= 0){
+			this.x = s_width;
+		}
+		if(this.y <= 0){
+			this.y = s_height;
+		}
+		if(this.x >= s_width){
+			this.x = 0;
+		}
+		if(this.y >= s_height){
+			this.y = 0;
+		}
 		
 		this.alpha -= this.alpha_delta;
 		if(this.alpha <= this.alpha_min || this.alpha >= 200){
