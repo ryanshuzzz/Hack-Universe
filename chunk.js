@@ -33,7 +33,6 @@ class chunks{
 		}
 		
 		if(spawn_chunk){
-			console.log("Spawn!!");
 			var newchunk = new chunk([cx * this.size, cy * this.size], this.size);
 			this.chunk_buffer.push(newchunk);
 			return newchunk;

@@ -7,7 +7,7 @@ class star {
 		this.alpha = 210;
 		this.alpha_min = 0;
 		this.alpha_delta = (Math.floor(Math.random() * 3) + 1) / 2;
-		this.speedmod = Math.floor(Math.random() * 5)
+		this.speedmod = Math.floor(Math.random() * 2)
 	}
 	
 	draw(s_width, s_height, dx, dy, base_alpha){
@@ -61,8 +61,8 @@ class star {
 
 class starsystem {
 	constructor(speed, base_alpha=0) {
-		this.s_width = 1280;
-		this.s_height = 720;
+		this.s_width = 1920;
+		this.s_height = 1080;
 		this.buffer = [];
 		this.max = 70;
 		this.dx = 0;

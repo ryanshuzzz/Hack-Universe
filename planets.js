@@ -45,7 +45,7 @@ class Planet {
 		this.cy = cy;
 	}
 
-	draw(){
+	draw(cx, cy){
 		stroke(120);
 		circle(this.cx, this.cy, this.distance, this.distance);
 		fill(this.color);

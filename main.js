@@ -1,6 +1,6 @@
 uni = new universe();
-stars = new starsystem(20);
-stars2 = new starsystem(10, 150);
+stars = new starsystem(10);
+stars2 = new starsystem(5, 150);
 
 function draw() {
 	stars.setDelta(0,0);
@@ -37,7 +37,7 @@ function draw() {
 		uni.move(1,1);
 	}
 	//Mobile touch
-	
+  
 	background(0);
 	stars.draw();
 	stars2.draw();

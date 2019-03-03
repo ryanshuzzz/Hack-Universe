@@ -3,7 +3,7 @@ class universe{
 	constructor(){
 		this.cam_x = 0;
 		this.cam_y = 0;
-		this.cam_speed = 50;
+		this.cam_speed = 20;
 		
 		this.solar_systems = [];
 		
@@ -24,6 +24,7 @@ class universe{
 		
 		if(spawn_new != null){
 			this.solar_systems.push(new solarsystem(spawn_new.getpos().x, spawn_new.getpos().y, this.chunk_buf.getsize(), this.chunk_buf.getsize()));
+			console.log("Generated " + generateName() + " System.");
 		}
 		
 		var i;
@@ -39,7 +40,7 @@ class universe{
 
 	// Onframe draw
 	update(){
-		this.chunk_buf.draw(this.cam_x, this.cam_y);
+		//this.chunk_buf.draw(this.cam_x, this.cam_y);
 		
 		var i;
 		for(i = 0; i < this.solar_systems.length; i++){
@@ -52,7 +53,7 @@ class universe{
 			// Draw solar system if on canvas
 			if(Math.abs(dist) < this.distance(0,0,Math.abs(canvas.width),Math.abs(canvas.height)) + Math.abs(rad) + 50){
 				this.solar_systems[i].rotatePlanets();
-				this.solar_systems[i].drawPlanets();
+				this.solar_systems[i].drawPlanets(this.cam_x, this.cam_y);
 			}
 		}
 	}
