@@ -1,3 +1,10 @@
+var planetColors = ["#97979F", "#CECCD1", "#B5A7A7","#99857A", "#C67B5C",
+                 "#E27B58", "#FF9D6F", "#663926", "#8E6A5A", "#3B5D38",
+                 "#8CB1DE", "#945B47", "#927E77", "#3C4258", "#343E47",
+				 "#7B7869", "#A49B72", "#C5AB6E", "#C3A171"];
+
+var sunColors = ["#FFE484", "#FFCC33", "#FC9601", "#D14009"];
+
 class Planet {
 	constructor(x, y, distance, size, speed) {
 		this.cx = x;
@@ -13,6 +20,8 @@ class Planet {
 		this.angle = -1;
 		this.distance = distance;
 		this.speed = speed / 100;
+		let color = planetColors[Math.floor(Math.random() * planetColors.length)];
+		this.color = color;
 	}
 	
 	rotate(){
@@ -21,17 +30,20 @@ class Planet {
 		this.x = this.distance * Math.cos(this.angle) + this.cx;
 		this.y = this.distance * Math.sin(this.angle) + this.cy;
 	}
-
-	setcolor(color){
+	isSun(){
+		let color = sunColors[Math.floor(Math.random() * sunColors.length)];
 		this.color = color;
 	}
 
+
 	draw(){
+		stroke(204);
+		circle(this.cx, this.cy, this.distance, this.distance);
 		fill(this.color);
+		noStroke();
 		ellipse(this.x, this.y, this.size, this.size);
 		
 		noFill(this.color);
-		stroke(this.color);
-		circle(this.cx, this.cy, this.distance, this.distance);
+
 	}
 }
