@@ -3,7 +3,7 @@ class universe{
 	constructor(){
 		this.cam_x = 0;
 		this.cam_y = 0;
-		this.cam_speed = 100;
+		this.cam_speed = 50;
 		
 		this.solar_systems = [];
 		
