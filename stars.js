@@ -4,7 +4,7 @@ class star {
 		this.y = y;
 		this.size = size;
 		
-		this.alpha = 200;
+		this.alpha = 210;
 		this.alpha_min = 0;
 		this.alpha_delta = (Math.floor(Math.random() * 3) + 1) / 2;
 	}
@@ -38,10 +38,10 @@ class star {
 
 class starsystem {
 	constructor() {
-		this.s_width = 1920;
-		this.s_height = 1920;
+		this.s_width = 4000;
+		this.s_height = 4000;
 		this.buffer = [];
-		this.max = 900;
+		this.max = 1500;
 		this.dx = 0;
 		this.dy = 0;
 		

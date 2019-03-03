@@ -13,20 +13,22 @@ class universe{
 		this.solarsystemspawny;
 		
 		this.spawn();
+
 	}
 	
 	distance(x1, y1, x2, y2){
-		return Math.sqrt(Math.pow((x1-x2),2) + Math.pow((y1-y2),2));
+		return Math.sqrt(Math.pow((x2+x1),2) + Math.pow((y2+y1),2));
 	}
 	
 	// Check in vicinity of player to see if solar system should be spawned
 
 	spawn(){
 		var i;
-		for(i = 0; i < 3; i++){
-			this.solar_systems.push(new solarsystem(0, 0, 50, 50));
-
+		for(i = 0; i < 100; i++){
+			this.solar_systems[i] = (new solarsystem(10,10, 500, 500));
+			// location x,y - random width, height
 			//this.solar_systems.push(new solarsystem(Math.floor(Math.random() * size), Math.floor(Math.random() * size), size, size));
+
 		}
 	}
 	
@@ -34,7 +36,13 @@ class universe{
 	move(v, h){
 		this.cam_x += v * this.cam_speed;
 		this.cam_y += h * this.cam_speed;
+		var i;
+		for(i = 0; i < this.solar_systems.length; i++){
+			this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
+		}
+		this.update();
 	}
+
 	
 	// Onframe draw
 	update(){
@@ -46,10 +54,10 @@ class universe{
 			var sol_y = this.solar_systems[i].getdata().y;
 			var rad = this.solar_systems[i].getdata().radius;
 			
-			var dist = this.distance(this.cam_x - canvas.width/2, this.cam_y - canvas.height/2, sol_x, sol_y);
-			console.log(Math.abs(dist) + ", "+ canvas.width);
-			if(Math.abs(dist) < canvas.width + rad){
-				this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
+			var dist = this.distance(this.cam_x, this.cam_y, sol_x, sol_y);
+			//console.log(i + ": " + Math.abs(dist) + "..." + this.cam_y + "....." +sol_y);
+			//console.log(Math.abs(dist));// + ", "+ canvas.width);
+			if(Math.abs(dist) < this.distance(0,0,Math.abs(canvas.width),Math.abs(canvas.height)) + Math.abs(rad) + 50){
 				this.solar_systems[i].rotatePlanets();
 				this.solar_systems[i].drawPlanets();
 			}
