@@ -20,7 +20,7 @@ class universe{
 	}
 	
 	distance(x1, y1, x2, y2){
-		return Math.sqrt(((x2 - x1)^2) + ((y2 - y1)^2));
+		return Math.sqrt(Math.pow((x1-x2),2) + Math.pow((y1-y2),2));
 	}
 	
 	// Check in vicinity of player to see if solar system should be spawned
@@ -48,7 +48,7 @@ class universe{
 			console.log(sol_x + ", " + sol_y + ", " + this.cam_x + ", " + this.cam_y + ", " + dist);
 			//console.log(dist);
 			
-			if(dist < 35){
+			if(Math.abs(dist) < 500){
 				this.solar_systems[i].set_pos(this.cam_x, this.cam_y);
 				this.solar_systems[i].rotatePlanets();
 				this.solar_systems[i].drawPlanets();
