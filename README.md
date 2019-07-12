@@ -10,7 +10,7 @@ The goal of this application is to hopefully show the user the vastness of space
 
 ## How can I see?
 
-1. Navigate to [this link](ryanshuzzz.github.io/Hack-Universe)
+1. Navigate to [this link](https://ryanshuzzz.github.io/Hack-Universe/)
 2. Use "WASD" to move the camera, and Space Bar to reset camera to initial position
 
 ## Dependencies
